@@ -1,0 +1,89 @@
+<ion-header translucent class="ion-no-border">
+  <ion-toolbar>
+    <ion-back-button defaultHref="" (click)="goBack()" slot="start"></ion-back-button>
+    <ion-title class="ion-text-uppercase" *ngIf="this.loading">
+      {{ reservation.barbershop.name }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="container">
+  <div *ngIf="!this.loading">
+    <app-skeleton-list></app-skeleton-list>
+  </div>
+
+  <div *ngIf="this.loading">
+    <ion-row>
+      <ion-col>
+        <img class="barberbershop_img" src="{{ getBarbershopLogoURL(reservation.barbershop.logo) }}" />
+      </ion-col>
+    </ion-row>
+    <ion-list class="ion-no-margin">
+      <ion-item color="tertiary">
+        <ion-grid>
+          <ion-row class="ion-justify-content-center ion-align-items-center date">
+            <h4 class="ion-text-uppercase" color="light">{{ applyDateFormat(reservation.date) }}
+              <ion-icon name="alarm-outline" class="clock" color="light"></ion-icon>
+              {{ getHours(reservation.date) }}
+            </h4>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <!-- <ion-card button (click)="presentBarberPopover(reservation.barber)"> -->
+        <ion-card>
+          <img src="{{ getBarberAvatarURL(reservation.barber.avatar) }}" />
+          <ion-card-header>
+            <ion-card-subtitle>BARBERO</ion-card-subtitle>
+            <ion-card-title>{{this.reservation.barber.name}} {{this.reservation.barber.lastName}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{this.reservation.barber.description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-card button (click)="presentServicePopover(reservation.service[0])"> -->
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-list-header>
+            <h2>Servicios solicitados</h2>
+          </ion-list-header>
+          <ion-item *ngFor="let service of reservation.service">
+            <ion-avatar slot="start">
+              <img src="{{ getServiceImageURL(service.image) }}" />
+            </ion-avatar>
+            <ion-label class="ion-text-wrap">
+              <h2>{{service.name}}</h2>
+              <h3>${{service.price}}</h3>
+              <p>{{service.description}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ng-container *ngIf="this.loading">
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="!thisReservationIsOld(this.reservation)">
+      <ion-fab-button color="warning">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button color="primary" button (click)="suscribeLocalNotification(reservation)">
+          <ion-icon name="notifications-outline"></ion-icon>
+        </ion-fab-button>
+        <!-- <ion-fab-button color="primary" button (click)="this.showHowToGo(this.reservation.barbershop)">
+      <ion-icon name="location-outline"></ion-icon>
+    </ion-fab-button> -->
+      </ion-fab-list>
+      <ion-fab-list side="start">
+        <ion-fab-button color="danger" button (click)="presentActionSheet(reservation._id)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  </ng-container>
+</ion-content>

@@ -1,0 +1,51 @@
+@import "../../../scss/index.scss";
+
+.menu-top {
+  display: flex;
+  
+  button {
+    color: $font-light;
+
+    &:hover {
+      color: $primary-color;
+    }
+    &:focus,
+    &:active {
+      color: $font-light;
+    }
+  }
+
+  &_left {
+      &_logo{
+        height: 100%;
+        width: 200px;
+        padding: 0 10px;  
+      }
+  }
+
+  &_right{
+      position: absolute;
+      right: 20px;
+  }
+
+  &_name{
+    color: $font-light;
+    margin-right: 15px;
+  }
+  &_avatar{
+    color: $font-light;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  &_popover{
+      padding: 0px !important; 
+  }
+
+  &_menu{
+       width: 180px;
+       margin: 0px -12px ; 
+       border:none; 
+  }
+
+}

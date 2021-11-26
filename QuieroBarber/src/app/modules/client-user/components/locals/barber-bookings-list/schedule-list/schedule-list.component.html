@@ -1,0 +1,40 @@
+<ng-container *ngIf="this.scheduleHours.length">
+  <ion-list class="ion-margin-horizontal">
+    <ion-list-header class="ion-margin-vertical ">
+          <ion-label color="dark" class="">Horarios del Barbero</ion-label>
+    </ion-list-header>
+
+    <ng-container *ngFor="let scheduleHour of this.scheduleHours">
+
+      <ng-container [ngSwitch]="scheduleHour.slotType">
+
+        <ion-item lines="bottom" *ngSwitchCase="slotType.available" (click)="goToSelectServices(scheduleHour)">
+          <ion-label>
+            <h2>Disponible</h2>
+            <h3>{{scheduleHour.dateDisplayFrom + ' - ' + scheduleHour.dateDisplayUntil}}</h3>
+          </ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end" color="warning"></ion-icon>
+
+        </ion-item>
+
+        <ion-item color="success" lines="none" *ngSwitchCase="slotType.userReservation">
+          <ion-label>
+            <h2>Tu Reserva</h2>
+            <h3>{{scheduleHour.dateDisplayFrom + ' - ' + scheduleHour.dateDisplayUntil}}</h3>
+          </ion-label>
+          <ion-icon name="calendar-outline" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item color="danger" lines="none" *ngSwitchCase="slotType.notAvailable">
+          <ion-label>
+            <h2>No Disponible</h2>
+            <h3>{{scheduleHour.dateDisplayFrom + ' - ' + scheduleHour.dateDisplayUntil}}</h3>
+          </ion-label>
+          <ion-icon name="ban-outline" slot="end"></ion-icon>
+        </ion-item>
+
+      </ng-container>
+
+    </ng-container>
+  </ion-list>
+</ng-container>

@@ -1,0 +1,1534 @@
+{
+	"info": {
+		"_postman_id": "50d3918e-24d4-4193-95ae-144d76d44747",
+		"name": "QuieroBarber",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Sign-Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maurosss\",\r\n    \"lastName\":\"Arrietasss\",\r\n    \"email\": \"maurossss@mail.com\",\r\n    \"password\": \"aassddff\",\r\n    \"repeatPassword\":\"aassddff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}sign-up-owner",
+							"host": [
+								"{{route}}sign-up-owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign-Up-Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lagarto\",\r\n    \"lastName\":\"Juancho\",\r\n    \"email\": \"fernandoperez@gmail.com\",\r\n    \"password\": \"aassddff\",\r\n    \"repeatPassword\":\"aassddff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}sign-up-admin",
+							"host": [
+								"{{route}}sign-up-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign-Up-Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juancito\",\r\n    \"lastName\":\"De Los Palotes\",\r\n    \"email\": \"ferandoperez1902@gmail.com\",\r\n    \"password\": \"aassddff\",\r\n    \"repeatPassword\":\"aassddff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}sign-up-client",
+							"host": [
+								"{{route}}sign-up-client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign-In",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", data.accessToken);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mauro@mail.com\",\r\n    \"password\":\"aassddff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}sign-in",
+							"host": [
+								"{{route}}sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}users",
+							"host": [
+								"{{route}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Users-Active",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}users-active?active=false",
+							"host": [
+								"{{route}}users-active"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Avatar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-avatar/nblLjbzPqRXTPzjqrSfEH6iZ.png",
+							"host": [
+								"{{route}}get-avatar"
+							],
+							"path": [
+								"nblLjbzPqRXTPzjqrSfEH6iZ.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload-Avatar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/marri/Desktop/Cosas varias/Imagen1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{route}}upload-avatar/617def804ccc8bd6905e1412",
+							"host": [
+								"{{route}}upload-avatar"
+							],
+							"path": [
+								"617def804ccc8bd6905e1412"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Users",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mauro\",\r\n    \"lastName\":\"Arrieta\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}update-user/612fad28d599a2138993aaa7",
+							"host": [
+								"{{route}}update-user"
+							],
+							"path": [
+								"612fad28d599a2138993aaa7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate-User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}activate-user/612fad28d599a2138993aaa7",
+							"host": [
+								"{{route}}activate-user"
+							],
+							"path": [
+								"612fad28d599a2138993aaa7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}delete-user/612ff5aad20b2616403c4e06",
+							"host": [
+								"{{route}}delete-user"
+							],
+							"path": [
+								"612ff5aad20b2616403c4e06"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Barbers",
+			"item": [
+				{
+					"name": "Get-Barbers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-barbers",
+							"host": [
+								"{{route}}get-barbers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Services-By-Barbershop",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-services-by-barbershop/61773c4af1c04b6f2dca09f9",
+							"host": [
+								"{{route}}get-services-by-barbershop"
+							],
+							"path": [
+								"61773c4af1c04b6f2dca09f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add-Barber",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"name\",\r\n  \"lastName\": \"lastName\",\r\n  \"description\": \"description\",\r\n  \"aka\":\"aka\",\r\n  \"active\": true,\r\n  \"avatar\": \"avatar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}add-barber/61773c4af1c04b6f2dca09f9",
+							"host": [
+								"{{route}}add-barber"
+							],
+							"path": [
+								"61773c4af1c04b6f2dca09f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Barbers-Active",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"active\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}get-barbers-active/61773c4af1c04b6f2dca09f9",
+							"host": [
+								"{{route}}get-barbers-active"
+							],
+							"path": [
+								"61773c4af1c04b6f2dca09f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Avatar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-avatar-barber/5jvS4g_a6MzL50oPl-0Zq6Xk.png",
+							"host": [
+								"{{route}}get-avatar-barber"
+							],
+							"path": [
+								"5jvS4g_a6MzL50oPl-0Zq6Xk.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload-Avatar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/marri/Desktop/descarga.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{route}}upload-avatar-barber/616b45e7febb641966f3d6ff",
+							"host": [
+								"{{route}}upload-avatar-barber"
+							],
+							"path": [
+								"616b45e7febb641966f3d6ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Barbers",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mauro\",\r\n    \"lastName\":\"Arrieta\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}update-barber/616b45e7febb641966f3d6ff",
+							"host": [
+								"{{route}}update-barber"
+							],
+							"path": [
+								"616b45e7febb641966f3d6ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate-Barber",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}activate-barber/617dd22421c9d45b88732315",
+							"host": [
+								"{{route}}activate-barber"
+							],
+							"path": [
+								"617dd22421c9d45b88732315"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Barber",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}delete-barber/612ff5aad20b2616403c4e06",
+							"host": [
+								"{{route}}delete-barber"
+							],
+							"path": [
+								"612ff5aad20b2616403c4e06"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "Get-Services",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-services",
+							"host": [
+								"{{route}}get-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Services-Active",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-services-active?active=true&barbershop=617df4882baeb02177651611",
+							"host": [
+								"{{route}}get-services-active"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "true"
+								},
+								{
+									"key": "barbershop",
+									"value": "617df4882baeb02177651611"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add-Service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"name\",\r\n  \"description\": \"description\",\r\n  \"duration\": 20,\r\n  \"price\":150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}add-service/61773c4af1c04b6f2dca09f9",
+							"host": [
+								"{{route}}add-service"
+							],
+							"path": [
+								"61773c4af1c04b6f2dca09f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Services-By-Barbershop",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-services-by-barbershop/61773c4af1c04b6f2dca09f9",
+							"host": [
+								"{{route}}get-services-by-barbershop"
+							],
+							"path": [
+								"61773c4af1c04b6f2dca09f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-image-service/t6CGVq1s4D8y5q3oC1oW0RU8.png",
+							"host": [
+								"{{route}}get-image-service"
+							],
+							"path": [
+								"t6CGVq1s4D8y5q3oC1oW0RU8.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload-Image",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/marri/Desktop/Grupo 31.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{route}}upload-image-service/617e073b2baeb021776518c0",
+							"host": [
+								"{{route}}upload-image-service"
+							],
+							"path": [
+								"617e073b2baeb021776518c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Service",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"name2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}update-service/616caf9212cd45155ef0e26c",
+							"host": [
+								"{{route}}update-service"
+							],
+							"path": [
+								"616caf9212cd45155ef0e26c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate-Service",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}activate-service/616caf9212cd45155ef0e26c",
+							"host": [
+								"{{route}}activate-service"
+							],
+							"path": [
+								"616caf9212cd45155ef0e26c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Service",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}delete-service/616caf9212cd45155ef0e26c",
+							"host": [
+								"{{route}}delete-service"
+							],
+							"path": [
+								"616caf9212cd45155ef0e26c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "Get-Reservations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-reservations",
+							"host": [
+								"{{route}}get-reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add-Reservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"date\": \"2021-10-31 09:00:00\",\r\n  \"service\": \"617e06412baeb0217765186a\",\r\n  \"barber\": \"617df85b2baeb0217765162b\",\r\n  \"barbershop\":\"617df4882baeb02177651611\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}add-reservation",
+							"host": [
+								"{{route}}add-reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Reservations-By-Barbershop Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-reservations-by-user/617c6a0139f51872387f0b9d",
+							"host": [
+								"{{route}}get-reservations-by-user"
+							],
+							"path": [
+								"617c6a0139f51872387f0b9d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Reservations-By-Barber",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-reservations-by-barber/617c6a0139f51872387f0b9d",
+							"host": [
+								"{{route}}get-reservations-by-barber"
+							],
+							"path": [
+								"617c6a0139f51872387f0b9d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Reservations-By-User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-reservations-by-barber/617c6a0139f51872387f0b9d",
+							"host": [
+								"{{route}}get-reservations-by-barber"
+							],
+							"path": [
+								"617c6a0139f51872387f0b9d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Reservation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"date\": \"2021-10-31 09:00:00\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}update-reservation/616caf9212cd45155ef0e26c",
+							"host": [
+								"{{route}}update-reservation"
+							],
+							"path": [
+								"616caf9212cd45155ef0e26c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate-Reservation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}activate-reservation/616caf9212cd45155ef0e26c",
+							"host": [
+								"{{route}}activate-reservation"
+							],
+							"path": [
+								"616caf9212cd45155ef0e26c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Reservation",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}delete-reservation/616caf9212cd45155ef0e26c",
+							"host": [
+								"{{route}}delete-reservation"
+							],
+							"path": [
+								"616caf9212cd45155ef0e26c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get-Comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-comments",
+							"host": [
+								"{{route}}get-comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Comments-By-Barbershop",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-comments-by-barbershop/61773c4af1c04b6f2dca09f9",
+							"host": [
+								"{{route}}get-comments-by-barbershop"
+							],
+							"path": [
+								"61773c4af1c04b6f2dca09f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add-Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"comm\": \"Este es otro comentario con distinta puntuacion\",\r\n\"rate\": \"1\",\r\n\"userId\": \"617de199c1b71aea48c7bae6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}add-comment/617df4882baeb02177651611",
+							"host": [
+								"{{route}}add-comment"
+							],
+							"path": [
+								"617df4882baeb02177651611"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}delete-comment/616b63e36510f2ab99dbac62",
+							"host": [
+								"{{route}}delete-comment"
+							],
+							"path": [
+								"616b63e36510f2ab99dbac62"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Refresh-Access-Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYxMmVhZjFkODdlMzAwYzc1OTY4YjBlNyIsImV4cGlyYXRpb24iOjE2MzMwNTIwOTJ9.jTdpZ7OqENSkxIVryqnlHiUsLH7TeeEUc4lTIcQmGQU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}refresh-access-token",
+							"host": [
+								"{{route}}refresh-access-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BarberShops",
+			"item": [
+				{
+					"name": "Add-BarberShop",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Barbería Los HDP\",\r\n    \"description\":\"Esta es la descripción de la Barbería\",\r\n    \"address\":\"Esta es la dirección\", \r\n    \"images\": [],\r\n    \"geo\":{\r\n        \"lat\":-34.908634, \r\n        \"lng\":-56.177097\r\n    },\r\n    \"phone\": \"este es mi telefono\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}add-barbershop",
+							"host": [
+								"{{route}}add-barbershop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Barbershops-Active",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-barbershops-active?active=true",
+							"host": [
+								"{{route}}get-barbershops-active"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Logo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-logo/1yy9nd7jCVfghUfCEP9KlygN.png",
+							"host": [
+								"{{route}}get-logo"
+							],
+							"path": [
+								"1yy9nd7jCVfghUfCEP9KlygN.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}get-image/oq7unfiMrm1jG95D1M3phl0M.png",
+							"host": [
+								"{{route}}get-image"
+							],
+							"path": [
+								"oq7unfiMrm1jG95D1M3phl0M.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-BarberShops",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{route}}get-barbershops?limit=10&page=1",
+							"host": [
+								"{{route}}get-barbershops"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-BarberShop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{route}}get-barbershop/61773c4af1c04b6f2dca09f9",
+							"host": [
+								"{{route}}get-barbershop"
+							],
+							"path": [
+								"61773c4af1c04b6f2dca09f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-BarberShop-By-Owner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{route}}get-barbershop-by-owner/617d8c4dbb0da3d541fddb38",
+							"host": [
+								"{{route}}get-barbershop-by-owner"
+							],
+							"path": [
+								"617d8c4dbb0da3d541fddb38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload-Logo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/marri/Desktop/descarga.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{route}}upload-logo/616f6b35988ff5826247ead0",
+							"host": [
+								"{{route}}upload-logo"
+							],
+							"path": [
+								"616f6b35988ff5826247ead0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload-Image",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/marri/Desktop/moustache.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{route}}upload-image/617df4882baeb02177651611",
+							"host": [
+								"{{route}}upload-image"
+							],
+							"path": [
+								"617df4882baeb02177651611"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-BarberShop",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"updatedName\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}update-barbershop/616af957fd329737a2367f16",
+							"host": [
+								"{{route}}update-barbershop"
+							],
+							"path": [
+								"616af957fd329737a2367f16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate-BarberShop",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{route}}activate-barbershop/616f6b35988ff5826247ead0",
+							"host": [
+								"{{route}}activate-barbershop"
+							],
+							"path": [
+								"616f6b35988ff5826247ead0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-BarberShop",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{route}}delete-barbershop/617d9419aef5fa9ce979027b",
+							"host": [
+								"{{route}}delete-barbershop"
+							],
+							"path": [
+								"617d9419aef5fa9ce979027b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,44 @@
+<ng-container *ngIf="this.barbershop">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="client/tabs/locals"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content #content fullscreen>
+    <ion-card class="ion-no-border">
+      <ion-img [src]="getLogoURL(this.barbershop.logo)"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{this.barbershop.name}}</ion-card-title>
+        <ion-card-subtitle>{{this.barbershop.address}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+    <ion-segment value="manage-booking" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="manage-booking">
+        <ion-label>Reserva</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="gallery">
+        <ion-label>Galería</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <app-manage-booking [barbers]="this.barbershop.barbers" *ngIf="this.showManageBooking"></app-manage-booking>
+    <app-gallery [images]="this.barbershop.images" *ngIf="this.showGallery"></app-gallery>
+
+    <app-comments-list #commentsList (doComment)="this.refreshComments($event)" *ngIf="this.commentsReady" [comments]="this.comments" [barbershopId]="this.barbershop._id" ></app-comments-list>
+    <!-- <ion-fab horizontal="end" vertical="top" slot="fixed" (click)="scrollToAddComment()">
+      <ion-fab-button color="light" >
+        <ion-icon md="chatbox-ellipses-outline" ios="chatbox-ellipses-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+    <ion-fab horizontal="end" vertical="top" slot="fixed" (click)="handleFavourites()">
+      <ion-fab-button color="light" >
+        <ion-icon name="heart-outline" *ngIf="!this.isFavourite"></ion-icon>
+        <ion-icon name="heart" *ngIf="this.isFavourite"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+
+
+
+</ng-container>

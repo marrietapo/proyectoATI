@@ -1,0 +1,45 @@
+@import "../../../scss/index.scss";
+
+
+.card{
+
+
+    &_row{
+        margin-bottom: 20px;
+    }
+
+    &_logo{
+        display : table;
+        margin: 0 auto;
+        border: 2px solid #9a9a9a;
+        border-style: dashed;
+        border-radius: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    
+    &_title{
+        font-size: x-large;
+    }
+    
+    &_item{
+        
+        
+        &_title{
+            color: $font-grey;
+            font-size: medium;
+            margin-right: 10px;
+        }
+        
+        &_detail{
+            color: $font-grey;
+            font-size: large;
+            font-weight: bold;
+        }
+        
+        &_location{
+            
+        }
+    }
+}
+

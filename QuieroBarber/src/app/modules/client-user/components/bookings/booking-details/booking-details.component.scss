@@ -1,0 +1,75 @@
+.container {
+  width: 100vw;
+  height: 100%;
+}
+
+.poster-detail {
+  position: relative;
+  top: -75px;
+  left: -10px;
+  margin-bottom: -75px;
+}
+
+.title {
+  width: 100%;
+  position: absolute;
+  color: black;
+  background-color: red;
+  padding: 5px 5px 40px 5px;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.title h1 {
+  position: absolute;
+  top: 28px;
+  left: 5px;
+}
+
+.card-barber {
+  height: 120px;
+
+  &_name {
+    position: relative;
+    top: 15px;
+  }
+}
+
+.date {
+  text-align: center;
+  font-size: medium;
+  height: 100px;
+}
+
+.clock {
+  margin-bottom: -5px;
+}
+
+ion-icon {
+  font-size: 25px;
+  margin: 0 5px;
+}
+.barber {
+  display: block;
+  width: 100%;
+}
+
+.barberbershop_img {
+  min-height: 250px;
+}

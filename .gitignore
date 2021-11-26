@@ -1,0 +1,39 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+/QuieroBarber/.idea
+/QuieroBarber/.ionic
+/QuieroBarber/.sass-cache
+/QuieroBarber/.sourcemaps
+/QuieroBarber/.versions
+/QuieroBarber/.vscode
+/QuieroBarber/coverage
+/QuieroBarber/dist
+/QuieroBarber/node_modules
+/QuieroBarber/platforms
+/QuieroBarber/plugins
+/QuieroBarber/www
+/QuieroBarber - BackEnd/.idea
+/QuieroBarber - BackEnd/.ionic
+/QuieroBarber - BackEnd/.sass-cache
+/QuieroBarber - BackEnd/.sourcemaps
+/QuieroBarber - BackEnd/.versions
+/QuieroBarber - BackEnd/.vscode
+/QuieroBarber - BackEnd/coverage
+/QuieroBarber - BackEnd/dist
+/QuieroBarber - BackEnd/node_modules
+/QuieroBarber - BackEnd/platforms
+/QuieroBarber - BackEnd/plugins
+/QuieroBarber - BackEnd/www
+/QuieroBarber - Web/.idea
+/QuieroBarber - Web/.ionic
+/QuieroBarber - Web/.sass-cache
+/QuieroBarber - Web/.sourcemaps
+/QuieroBarber - Web/.versions
+/QuieroBarber - Web/.vscode
+/QuieroBarber - Web/coverage
+/QuieroBarber - Web/dist
+/QuieroBarber - Web/node_modules
+/QuieroBarber - Web/platforms
+/QuieroBarber - Web/plugins
+/QuieroBarber - Web/www

@@ -1,0 +1,25 @@
+<ng-container *ngIf="this.images.length > 0">
+  <swiper #swiper [config]="this.config" class="mySwiper">
+    <ng-template swiperSlide *ngFor="let image of images">
+      <ion-card>
+        <img src="{{ getImageURL(image) }}">
+        <ion-card-header>
+        </ion-card-header>
+      </ion-card>
+
+    </ng-template>
+  </swiper>
+</ng-container>
+<div *ngIf="this.images.length === 0">
+  <ion-item-sliding class="ion-padding">
+    <ion-item color="light">
+      <ion-label class="ion-text-wrap">
+        <h2>
+          Aún no se han cargado imagenes para esta galería.
+        </h2>
+        <p class="ion-margin-top">Busca la Barbería más conveniente para efectuar tu primera reserva.</p>
+      </ion-label>
+      <ion-icon name="image-outline" slot="end" color="warning"></ion-icon>
+    </ion-item>
+  </ion-item-sliding>
+</div>

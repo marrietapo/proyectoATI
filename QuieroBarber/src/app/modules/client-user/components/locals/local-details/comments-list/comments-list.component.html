@@ -1,0 +1,66 @@
+<ion-list #list>
+  <ion-list-header>
+    <h3>Comentarios</h3>
+  </ion-list-header>
+  <form [formGroup]="this.group">
+    <ion-item class="ion-align-items-center ion-padding-vertical" lines="none">
+      <ion-avatar slot="start" *ngIf="this.user">
+        <img *ngIf="!this.user.avatar" src="../../../../../../../assets/img/no-avatar.png">
+        <img *ngIf="this.user.avatar" src="{{ getUserAvatarURL(this.user.avatar) }}">
+      </ion-avatar>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <p>Deja una calificación</p>
+            <ionic5-star-rating #rating activeIcon="star" defaultIcon="star-outline" activeColor="#488aff"
+              defaultColor="#f4f4f4" readonly="false" [rating]="1" fontSize="20px" formControlName="starRating">
+            </ionic5-star-rating>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="10">
+            <ion-textarea placeholder="Añade un comentario..." (ionChange)="showButton($event)"
+              formControlName="comment" type="text"></ion-textarea>
+          </ion-col>
+          <ion-col *ngIf="this.showBtn" size="2" class="ion-text-center">
+            <ion-button (click)="addComment()">
+              <ion-icon name="send"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+        </ion-row>
+      </ion-grid>
+
+    </ion-item>
+  </form>
+  <div *ngIf="this.comments.length > 0">
+    <ion-item *ngFor="let comment of this.comments" class="ion-padding-vertical ion-align-items-start" lines="none">
+      <ion-avatar slot="start">
+        <img *ngIf="!comment.user.avatar" src="../../../../../../../assets/img/no-avatar.png">
+        <img *ngIf="comment.user.avatar" src="{{ getUserAvatarURL(comment.user.avatar) }}">
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">
+        <h3>{{comment.user.name + " " + comment.user.lastName }}</h3>
+        <ionic5-star-rating #rating activeIcon="star" defaultIcon="star-outline" activeColor="#488aff"
+              defaultColor="#f4f4f4" readonly="false" [rating]="comment.rate" fontSize="15px">
+            </ionic5-star-rating>
+        <p class="ion-justify-content-evenly">{{comment.comment}}</p>
+      </ion-label>
+    </ion-item>
+  </div>
+  <div *ngIf="this.comments.length === 0">
+    <ion-item color="light" class="ion-padding" lines="none">
+      <ion-label class="ion-text-wrap">
+        <h2>
+          No hay comentarios todavía.
+        </h2>
+        <p class="ion-margin-top">¿Por qué no haces tú el primer comentario?</p>
+      </ion-label>
+      <ion-icon name="chatbox-ellipses-outline" slot="end" color="warning"></ion-icon>
+    </ion-item>
+  </div>
+
+
+</ion-list>

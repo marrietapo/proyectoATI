@@ -1,0 +1,88 @@
+<ion-header translucent class="ion-no-border">
+  <ion-toolbar class="ion-text-center">
+    <ion-title color="tertiary" type="large" class="titlePage">Mis Reservas</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div *ngIf="this.loading === true">
+    <app-skeleton-list></app-skeleton-list>
+  </div>
+  <ion-list>
+    <div *ngIf="this.loading === false">
+      <div *ngIf="futureReservations.length === 0 && pastReservations.length === 0">
+        <ion-item-sliding>
+          <ion-item color="light">
+            <ion-label>
+              <h2>
+                Aún no se han efectuado reservas
+              </h2>
+              <p>Busca la Barbería más conveniente para efectuar tu primera reserva.</p>
+            </ion-label>
+            <ion-icon name="today-outline" slot="end" color="warning"></ion-icon>
+          </ion-item>
+        </ion-item-sliding>
+      </div>
+      <div *ngIf="futureReservations.length !== 0">
+        <ion-item-divider>
+          <ion-label>Reservas Futuras</ion-label>
+        </ion-item-divider>
+        <div *ngFor="let reservation of futureReservations">
+          <ion-item-sliding id="{{ reservation._id }}">
+            <ion-item button (click)="goToDetails(reservation._id)" color="light">
+              <ion-avatar slot="start">
+                <img src="{{ getLogoURL(reservation.barbershop.logo) }}" />
+              </ion-avatar>
+              <ion-label>
+                <h2>
+                  {{ applyDateFormat(reservation.date) }} -
+                  {{ getHours(reservation.date) }}
+                </h2>
+                <h3>{{ reservation.barbershop.name }}</h3>
+                <p>{{ reservation.service[0].name }}</p>
+              </ion-label>
+              <ion-icon md="code-working-outline" ios="code-working-outline" size="default" slot="end" color="warning"></ion-icon>
+            </ion-item>
+
+            <ion-item-options side="start">
+              <ion-item-option color="danger" class="item-option" button (click)="presentActionSheet(reservation._id)">
+                <ion-label></ion-label>
+                <ion-icon name="trash-outline" size="large"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item-options side="end">
+              <ion-item-option color="primary" class="item-option" button
+                (click)="suscribeLocalNotification(reservation)">
+                <ion-label></ion-label>
+                <ion-icon name="notifications-outline" size="large"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="this.loading === false && pastReservations.length !== 0">
+      <ion-item-divider>
+        <ion-label>Reservas Pasadas</ion-label>
+      </ion-item-divider>
+      <div *ngFor="let reservation of pastReservations">
+        <ion-item-sliding id="{{ reservation._id }}">
+          <ion-item button (click)="goToDetails(reservation._id)" color="light">
+            <ion-avatar slot="start" color="warning">
+              <img src="{{ getLogoURL(reservation.barbershop.logo) }}" />
+            </ion-avatar>
+            <ion-label>
+              <h2>
+                {{ applyDateFormat(reservation.date) }} -
+                {{ getHours(reservation.date) }}
+              </h2>
+              <h3>{{ reservation.barbershop.name }}</h3>
+              <p>{{ reservation.service[0].name }}</p>
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" ios="none" size="small" slot="end" color="warning"></ion-icon>
+          </ion-item>
+        </ion-item-sliding>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

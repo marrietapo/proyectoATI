@@ -1,0 +1,61 @@
+<ion-header translucent class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="client/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titlePage" color="tertiary">Favoritos</ion-title>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="this.locals.length > 0">
+    <form [formGroup]="this.group">
+      <ion-searchbar placeholder="Buscar" formControlName="searchBar" (ionChange)="searchLocals()"></ion-searchbar>
+    </form>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ng-container *ngIf="!this.loading">
+    <ng-container *ngIf="this.locals.length > 0" class="bg-container">
+      <ion-list>
+        <ng-container *ngIf="this.filterApplied">
+          <ion-item *ngFor="let local of this.localsFiltered" button (click)="detalle(local._id)" color="light">
+            <ion-avatar slot="start">
+              <img src={{getLogoURL(local.logo)}}>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{local.name}}</h2>
+              <h3>{{local.address}}</h3>
+              <p>{{local.description}}</p>
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" ios="none" size="medium" slot="end" color="warning"></ion-icon>
+          </ion-item>
+        </ng-container>
+        <ng-container *ngIf="!this.filterApplied">
+          <ion-item *ngFor="let local of this.locals" button (click)="detalle(local._id)" color="light">
+            <ion-avatar slot="start">
+              <img src={{getLogoURL(local.logo)}}>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{local.name}}</h2>
+              <h3>{{local.address}}</h3>
+              <p>{{local.description}}</p>
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" ios="none" size="medium" slot="end" color="warning"></ion-icon>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ng-container>
+    <ng-container *ngIf="this.locals.length === 0" class="bg-container">
+      <ion-item color="light" class="ion-padding">
+        <ion-label class="ion-text-wrap">
+          <h2>
+            Todavía no tienes barberías favoritas.
+          </h2>
+          <p class="ion-margin-top">Busca la Barbería más conveniente para efectuar tu primera reserva.</p>
+        </ion-label>
+        <ion-icon name="cut-outline" slot="end" color="warning"></ion-icon>
+      </ion-item>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="this.loading">
+    <app-skeleton-list></app-skeleton-list>
+  </ng-container>
+</ion-content>

@@ -1,0 +1,120 @@
+<ng-container *ngIf="this.user" class="container">
+  <ion-content fullscreen>
+    <ion-grid>
+      <ion-row class="ion-float-right"> </ion-row>
+
+      <ion-row class="ion-margin-vertical ion-justify-content-center">
+        <ion-col>
+          <ion-avatar class="avatar bounce-top">
+            <img *ngIf="!this.imageChange" [src]="this.avatar" />
+            <img *ngIf="this.imageChange" [src]="this.avatar" />
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-margin-vertical ion-justify-content-center">
+
+          <ion-button color="tertiary" (click)="getCamera()">
+            <ion-icon name="camera-outline"></ion-icon>
+          </ion-button>
+
+
+          <ion-button color="tertiary" (click)="getGallery()">
+            <ion-icon name="image-outline"></ion-icon>
+          </ion-button>
+
+      </ion-row>
+      <ion-row class="ion-margin-vertical ion-justify-content-center">
+        <ion-button *ngIf="this.imageChange" (click)="savePhoto()">Guardar cambios</ion-button>
+      </ion-row>
+
+      <ion-row class="
+          ion-text-capitalize ion-margin-vertical ion-justify-content-center
+        ">
+        <ion-text color="dark">
+          <h3 class="tracking-in-contract-bck name">
+            Hola, {{ this.user.name }} 👋
+          </h3>
+        </ion-text>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-card>
+      <div *ngIf="this.loadingNextReservation">
+        <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      </div>
+      <div *ngIf="!this.loadingNextReservation">
+        <img src="../../../../../assets/img/calendario-3.jpg" class="calendar" />
+
+
+        <div *ngIf="!this.reservation">
+          <ion-card-header>
+            <ion-card-subtitle class="ion-text-uppercase">PRÓXIMA RESERVA
+            </ion-card-subtitle>
+            <ion-card-title></ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="ion-padding">
+            <p>
+              Hola {{this.user.name}}! Al parecer no tienes reservas pendientes, no te parece que es hora de visitar tu
+              Barbería de confianza?
+            </p>
+            <div class="ion-float-right">
+              <ion-icon name="chevron-forward-outline" size="small" color="warning"
+                class="ion-float-left ion-margin-bottom"></ion-icon>
+
+            </div>
+          </ion-card-content>
+
+        </div>
+
+        <div *ngIf="this.reservation">
+          <ion-card-header>
+            <ion-card-subtitle class="ion-text-uppercase">PRÓXIMA RESERVA</ion-card-subtitle>
+            <ion-card-title>{{this.formatDate(this.reservation.date)}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="ion-padding" button (click)="this.goToDetails(this.reservation._id)">
+            <p>
+              Tu próxima reserva se aproxima! Aquí puedes chequear la información de tu próxima reserva, encender la
+              notificación, o asimismo cancelarla.
+            </p>
+            <div class="ion-float-right">
+              <ion-icon name="chevron-forward-outline" size="small" color="warning"
+                class="ion-float-left ion-margin-bottom"></ion-icon>
+
+            </div>
+
+          </ion-card-content>
+        </div>
+      </div>
+    </ion-card>
+    <ion-card>
+      <img src="../../../../../assets/img/barberia2.jpg" />
+      <ion-card-header>
+        <ion-card-subtitle class="ion-text-uppercase">Barberías Favoritas</ion-card-subtitle>
+        <ion-card-title>BARBERÍAS FAVORITAS</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="ion-padding" (click)="this.goToFavourites()">
+        <p>
+          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota,
+          Madison was named the capital of the Wisconsin Territory in 1836.
+        </p>
+        <div class="ion-float-right">
+          <ion-icon name="chevron-forward-outline" size="small" color="warning"
+            class="ion-float-left ion-margin-bottom"></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div>
+      <div class="ion-align-items-center ion-justify-content-center logout_div">
+        <ion-item button (click)="logout()" class="ion-justify-content-center logout_item">
+          <ion-icon name="log-out-outline" size="small" class="ion-margin-end"></ion-icon>
+          <ion-label>
+            <h3>SALIR</h3>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+  </ion-content>
+</ng-container>

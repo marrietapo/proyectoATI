@@ -1,0 +1,52 @@
+<ion-header translucent class="ion-no-border">
+  <ion-toolbar>
+    <ion-back-button defaultHref="" (click)="regresar()" slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <form [formGroup]="this.group">
+    <ion-list>
+      <ion-row class="ion-text-center ion-padding-vertical">
+        <ion-list-header>
+          <ion-col>
+            <h4 color="tertiary">¿Qué te querés hacer?</h4>
+          </ion-col>
+        </ion-list-header>
+      </ion-row>
+
+
+      <ng-container *ngIf="this.services.length > 0">
+        <ng-container formArrayName="servicesForm">
+          <div *ngFor="let serviceForm of this.group.get('servicesForm')['controls']; let i = index;">
+            <div class="mb-6" [formGroupName]="i">
+              <ion-item>
+                <ion-label>
+                  <h3>{{services[i].name}}</h3>
+                  <p>{{services[i].price}}</p>
+                </ion-label>
+                <ion-checkbox color="primary" checked slot="start" formControlName="isChecked"
+                  (ionChange)="getPriceValue($event, services[i].price)"></ion-checkbox>
+              </ion-item>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+  </form>
+
+  <ion-row class="ion-text-center ion-padding-vertical">
+    <ion-col>
+      <ion-chip outline color="primary">
+        <ion-label>{{'$' + this.totalAmountDisplay}}</ion-label>
+        <ion-icon name="wallet-outline"></ion-icon>
+      </ion-chip>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center">
+
+    <ion-col>
+
+      <ion-button color="tertiary" (click)="createReservation()">Crear Reserva</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,53 @@
+<div class="container">
+  <form [formGroup]="this.group" class=" login">
+    <ion-grid fixed class="ion-align-items-center">
+
+      <ion-row>
+        <ion-col size="2"></ion-col>
+        <ion-col size="8" class="ion-text-center login_logo">
+          <img src="/assets/img/quiero_barber_logo.png">
+        </ion-col>
+        <ion-col size="2"></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size="10" offset="1">
+
+          <ion-list class="login_list">
+
+            <ion-item class="login_list_item">
+              <ion-label position="floating" class="login_list_item_label">Email</ion-label>
+              <ion-input name="email" type="email" inputmode="email" required formControlName="emailLogin"
+                class="login_list_item_input"></ion-input>
+            </ion-item>
+
+            <ion-item class="login_list_item">
+              <ion-label position="floating" class="login_list_item_label">Password</ion-label>
+              <ion-input name="password" type="password" required formControlName="passwordLogin"
+                class="login_list_item_input"></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6" offset="3" class="ion-text-center">
+          <ion-button class="login_list_item_button" type="submit" color="tertiary" size="default" expand="block"
+            (click)="login()">
+            Login
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8" offset="2" class="ion-text-center">
+          <ion-button type="submit" class="login_list_item_button" color="tertiary" size="small" fill="clear"
+            expand="block" (click)="goToRegister()">
+            Registrarme
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</div>

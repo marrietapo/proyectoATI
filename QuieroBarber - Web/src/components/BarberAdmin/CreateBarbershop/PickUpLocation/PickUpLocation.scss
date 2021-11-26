@@ -1,0 +1,37 @@
+@import "../../../../scss/index.scss";
+
+.ver {
+    height: 500px;
+}
+
+.register-form{
+    text-align: center;
+    padding: 30px 20px 20px 20px;
+
+    .ant-form-item{
+        &:nth-child(5),
+        &:last-of-type {
+            margin: 0;
+        }
+    }
+    
+   
+    .ant-input {
+        font-size: 0em + 20px / $defaultFontSize;
+        padding: 20px 20px 20px 40px;
+        height: 42px;
+        &:focus {
+            border-color: $primary-color;
+            box-shadow: none;
+        }
+    }
+    &_textarea{
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+    }
+   
+}
+.coords{
+    text-align: center;
+}

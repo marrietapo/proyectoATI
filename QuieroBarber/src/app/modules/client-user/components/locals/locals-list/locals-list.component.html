@@ -1,0 +1,45 @@
+<ng-container *ngIf="this.locals.length > 0" class="bg-container">
+  <ion-header translucent  >
+    <ion-toolbar>
+      <ion-title color="tertiary" class="titlePage ion-text-center">Locales</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <form [formGroup]="this.group">
+        <ion-searchbar placeholder="Buscar" formControlName="searchBar" (ionChange)="searchLocals()"></ion-searchbar>
+      </form>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen>
+    <ion-list>
+      <ng-container *ngIf="this.filterApplied">
+        <ion-item *ngFor="let local of this.localsFiltered" button (click)="detalle(local._id)" color="light">
+          <ion-avatar slot="start">
+            <img src={{getLogoURL(local.logo)}}>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{local.name}}</h2>
+            <h3>{{local.address}}</h3>
+            <p>{{local.description}}</p>
+            <ion-icon md="chevron-forward-outline" ios="none" size="medium" slot="end" color="warning"></ion-icon>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+      <ng-container *ngIf="!this.filterApplied">
+        <ion-item *ngFor="let local of this.locals" button (click)="detalle(local._id)" color="light">
+          <ion-avatar slot="start">
+            <img src={{getLogoURL(local.logo)}}>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{local.name}}</h2>
+            <h3>{{local.address}}</h3>
+            <p>{{local.description}}</p>
+          </ion-label>
+          <ion-icon name="chevron-forward-outline" ios="none" size="medium" slot="end"  color="warning"></ion-icon>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </ion-content>
+</ng-container>
+<ng-container *ngIf="this.locals.length === 0">
+  <app-skeleton-list></app-skeleton-list>
+</ng-container>

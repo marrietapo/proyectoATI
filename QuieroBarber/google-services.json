@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "262565584498",
+    "project_id": "quiero-barber-app-85678",
+    "storage_bucket": "quiero-barber-app-85678.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262565584498:android:b28aa8f62cc7eb5e2f2ceb",
+        "android_client_info": {
+          "package_name": "com.quierobarber.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262565584498-lsnfnd408a7so32e8dnvgrh1tap29n13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeZ56-fD4Luy6OuJ7Jf-kFOTRBpQXDW20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262565584498-lsnfnd408a7so32e8dnvgrh1tap29n13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,68 @@
+<div class="container">
+  <form [formGroup]="this.group" class=" register">
+    <ion-grid fixed class="ion-align-items-center">
+
+      <ion-row>
+        <ion-col size="2"></ion-col>
+        <ion-col size="8" class="ion-text-center register_logo">
+          <img src="/assets/img/quiero_barber_logo.png">
+        </ion-col>
+        <ion-col size="2"></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size="10" offset="1">
+
+          <ion-list class="register_list">
+
+            <ion-item class="register_list_item">
+              <ion-label position="floating" class="register_list_item_label">Nombre</ion-label>
+              <ion-input name="name" type="text" formControlName="name" required class="register_list_item_input">
+              </ion-input>
+            </ion-item>
+
+            <ion-item class="register_list_item">
+              <ion-label position="floating" class="register_list_item_label">Apellido</ion-label>
+              <ion-input name="lastName" type="text" formControlName="lastName" required
+                class="register_list_item_input"></ion-input>
+            </ion-item>
+            <ion-item class="register_list_item">
+              <ion-label position="floating" class="register_list_item_label">Correo Electrónico</ion-label>
+              <ion-input name="email" type="email" formControlName="email" required class="register_list_item_input">
+              </ion-input>
+            </ion-item>
+            <ion-item class="register_list_item">
+              <ion-label position="floating" class="register_list_item_label">Contraseña</ion-label>
+              <ion-input name="password" type="password" formControlName="password" required
+                class="register_list_item_input"></ion-input>
+            </ion-item>
+            <ion-item class="register_list_item">
+              <ion-label position="floating" class="register_list_item_label">Repetir Contraseña</ion-label>
+              <ion-input name="repeatPassword" type="password" required formControlName="repeatPassword"
+                class="register_list_item_input"></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6" offset="3" class="ion-text-center">
+          <ion-button class="register_list_item_button" type="submit" color="tertiary" size="default" expand="block"
+            (click)="register()">
+            Crear usuario
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8" offset="2" class="ion-text-center">
+          <ion-button type="submit" class="register_list_item_button" color="tertiary" size="small" fill="clear"
+            expand="block" (click)="goToLogin()">
+            LOGUEARME
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</div>

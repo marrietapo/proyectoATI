@@ -1,0 +1,15 @@
+
+  <ion-item *ngIf="this.success" >
+      <ion-row class="ion-justify-content-center ion-align-items-center col">
+        <ion-icon name="checkmark-circle-outline"  class="avatar bounce-top ion-margin ion-justify-content-center ion-align-items-center" color="success"></ion-icon>
+      </ion-row>
+
+  </ion-item>
+
+  <ion-item *ngIf="!this.success" class="ion-justify-content-center ion-align-items-center">
+    <ion-row class="ion-justify-content-center ion-align-items-center col">
+      <ion-icon name="close-circle-outline" class="avatar bounce-top ion-margin ion-justify-content-center ion-align-items-center" color="danger"></ion-icon>
+    </ion-row>
+
+  </ion-item>
+
